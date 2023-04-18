@@ -6,9 +6,10 @@ let verbList;
 let symbolList;
 let questionList;
 let numberLength = 6;
+let resultText = document.querySelector("#password");
 
 let randomWord = (wordArray) => wordArray[Math.floor(Math.random() * wordArray.length)];
-let randomNumber = () => Math.floor(Math.random()*1_000_000);
+let randomNumber = () => Math.floor(Math.random()*100_000);
 
 fetch("./import/prepositions.json")
     .then(response => response.json())
@@ -40,8 +41,13 @@ fetch("./import/symbols.json")
         symbolList = data;
     });
 
-function showMe(newText){
-    document.querySelector(".results").innerHTML = newText;
+function copyText(){
+    navigator.clipboard.writeText(resultText.innerHTML);
+}
+
+function displayPassword(password){
+    resultText.innerHTML = password;
+    resultText.style.color = "yellow";
 }
 
 function getPass(){
@@ -49,27 +55,27 @@ function getPass(){
         case 0:
             // console.log("0");
             pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomWord(prepositionList) + randomWord(nounList) + randomWord(symbolList) + randomNumber();
-            showMe(pswrd);
+            displayPassword(pswrd);
             break;
         case 1:
             // console.log("1");
             pswrd = randomWord(verbList) + randomWord(nounList) + randomNumber();
-            showMe(pswrd);
+            displayPassword(pswrd);
             break;
         case 2:
             // console.log("2");
             pswrd = "i" + randomWord(verbList) + randomWord(nounList) + randomWord(symbolList) + randomWord(nounList) + randomNumber();
-            showMe(pswrd);
+            displayPassword(pswrd);
             break;
         case 3:
             // console.log("3");
             pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomNumber();
-            showMe(pswrd);
+            displayPassword(pswrd);
             break;
         case 4:
             // console.log("4");
             pswrd = randomWord(verbList) + "the" + randomWord(nounList) + randomWord(prepositionList) + randomWord(symbolList) + randomWord(nounList) + randomNumber();
-            showMe(pswrd);
+            displayPassword(pswrd);
             break;
     }
 }
