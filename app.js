@@ -8,6 +8,20 @@ let questionList;
 let numberLength = 6;
 let resultText = document.querySelector("#password");
 
+let copyButton = document.querySelector("#copyButton");
+copyButton.addEventListener("click", copyText);
+
+let generateButton = document.querySelector("#generateButton");
+generateButton.addEventListener("click", getPass);
+
+let sliderValue = document.querySelector("#sliderValue");
+let inputSlider = document.querySelector("#inputSlider");
+sliderValue.textContent = inputSlider.value;
+
+inputSlider.addEventListener("input", (event) => {
+    sliderValue.textContent = event.target.value;
+});
+
 let randomWord = (wordArray) => wordArray[Math.floor(Math.random() * wordArray.length)];
 let randomNumber = () => Math.floor(Math.random()*100_000);
 
@@ -41,13 +55,18 @@ fetch("./import/symbols.json")
         symbolList = data;
     });
 
+// function updateSlider(event){
+//     sliderValue.textContent = event.target.value;
+//     console.log(sliderValue.textContent);
+// }
+
 function copyText(){
     navigator.clipboard.writeText(resultText.innerHTML);
 }
 
 function displayPassword(password){
     resultText.innerHTML = password;
-    resultText.style.color = "yellow";
+    resultText.style.color = "white";
 }
 
 function getPass(){

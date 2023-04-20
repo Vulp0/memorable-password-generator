@@ -1,4 +1,13 @@
-body {
-    font-family: 'Fragment Mono', monospace;
-    color: white;
+.font-manrope {
+    font-family: 'Manrope', sans-serif;
+}
+
+#main {
+    max-width: 1000px;
+    margin: 0;
+    padding: 0;
+}
+
+#password {
+    color: #808080;
 }
