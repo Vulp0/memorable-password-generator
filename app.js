@@ -55,11 +55,6 @@ fetch("./import/symbols.json")
         symbolList = data;
     });
 
-// function updateSlider(event){
-//     sliderValue.textContent = event.target.value;
-//     console.log(sliderValue.textContent);
-// }
-
 function copyText(){
     navigator.clipboard.writeText(resultText.innerHTML);
 }

@@ -1,13 +1,55 @@
+:root {
+    --accent-color: #A4FFAF;
+    --font-color: #E5E4EA;
+    --font-color-grayed: #595860;
+    --menu-bg-color: #24232B;
+    --body-bg-color: #100F15;
+}
+
+#background {
+    background-color: var(--body-bg-color);
+    color: var(--font-color);
+}
+
+#result, #options {
+    background-color: var(--menu-bg-color);
+}
+
+#copyButton {
+    color: var(--accent-color);
+}
+
+#copyButton:hover {
+    cursor: pointer;
+}
+
 .font-manrope {
     font-family: 'Manrope', sans-serif;
 }
 
-#main {
-    max-width: 1000px;
-    margin: 0;
-    padding: 0;
+#inputSlider {
+    accent-color: var(--accent-color);
 }
 
-#password {
-    color: #808080;
+#generateButton {
+    transition: 0.1s;
+    color: var(--menu-bg-color);
+    border: solid 1px transparent;
+    background-color: var(--accent-color);
+}
+
+#generateButton:active {
+    transition: 0.1s;
+    color: var(--accent-color);
+    border: solid 1px var(--accent-color);
+    background-color: transparent;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent-color);
+}
+
+
+.gray-out {
+    color: var(--font-color-grayed);
 }
