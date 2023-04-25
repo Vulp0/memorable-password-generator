@@ -1,29 +1,32 @@
-let pswrd;
-let prepositionList;
-let adjectiveList;
-let nounList;
-let verbList;
-let symbolList;
-let questionList;
+let pswrd, prepositionList, adjectiveList, nounList, verbList, symbolList, questionList;
 let numberLength = 6;
+
+
 let resultText = document.querySelector("#password");
+let generateButton = document.querySelector("#generateButton");
+generateButton.addEventListener("click", getPass);
 
 let copyButton = document.querySelector("#copyButton");
 copyButton.addEventListener("click", copyText);
 
-let generateButton = document.querySelector("#generateButton");
-generateButton.addEventListener("click", getPass);
+
+let capsCheck = document.querySelector("#capsCheck");
+let randomCapsCheck = document.querySelector("#randomCapsCheck");
+let symCheck = document.querySelector("#symCheck");
+
 
 let sliderValue = document.querySelector("#sliderValue");
 let inputSlider = document.querySelector("#inputSlider");
-sliderValue.textContent = inputSlider.value;
+// sliderValue.textContent = inputSlider.value;
 
 inputSlider.addEventListener("input", (event) => {
     sliderValue.textContent = event.target.value;
 });
 
 let randomWord = (wordArray) => wordArray[Math.floor(Math.random() * wordArray.length)];
-let randomNumber = () => Math.floor(Math.random()*100_000);
+let randomNumber = () => Math.floor(Math.random()*100_000); //placeholder
+let checkIt = (checkbox, list, getRandom) => checkbox.checked ? getRandom(list) : "";
+//uhhh(symCheck, symbolList, randomWord);
 
 fetch("./import/prepositions.json")
     .then(response => response.json())
@@ -67,28 +70,28 @@ function displayPassword(password){
 function getPass(){
     switch(Math.floor(Math.random() * 6)){
         case 0:
-            // console.log("0");
-            pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomWord(prepositionList) + randomWord(nounList) + randomWord(symbolList) + randomNumber();
+            //frothylistbelowfuneral*65820
+            pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomWord(prepositionList) + randomWord(nounList) + checkIt(symCheck, symbolList, randomWord) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 1:
-            // console.log("1");
-            pswrd = randomWord(verbList) + randomWord(nounList) + randomNumber();
+            //bounceyear54920
+            pswrd = randomWord(verbList) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 2:
-            // console.log("2");
-            pswrd = "i" + randomWord(verbList) + randomWord(nounList) + randomWord(symbolList) + randomWord(nounList) + randomNumber();
+            //irealizepassenger!perception92527
+            pswrd = "i" + randomWord(verbList) + randomWord(nounList) + checkIt(symCheck, symbolList, randomWord) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 3:
-            // console.log("3");
-            pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomNumber();
+            //gaudystress57636
+            pswrd = randomWord(adjectiveList) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 4:
-            // console.log("4");
-            pswrd = randomWord(verbList) + "the" + randomWord(nounList) + randomWord(prepositionList) + randomWord(symbolList) + randomWord(nounList) + randomNumber();
+            //specifytheconceptas@post34345
+            pswrd = randomWord(verbList) + "the" + randomWord(nounList) + randomWord(prepositionList) + checkIt(symCheck, symbolList, randomWord) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
     }

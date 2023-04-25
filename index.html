@@ -21,7 +21,7 @@
                 <div id="result" class="m-2 p-3">
                     <div class="d-flex  align-items-center">
                         <i id="copyButton" class="bi bi-clipboard-check-fill fs-1 pe-2"></i>
-                        <p id="password" class="gray-out fw-bold m-0">pA5sW0rD!</p>
+                        <p id="password" class="gray-out fw-bold m-0 text-break">pA5sW0rD</p>
                     </div>
                 </div>
 
@@ -29,22 +29,22 @@
                     <div id="dials">
                         <div id="slider-container">
                             <div class="d-flex justify-content-between">
-                                <p class="fs-5">Number lenght (digits)</p> <p id="sliderValue" class="fs-1">3</p>
+                                <p class="fs-5">Number length</p> <p id="sliderValue" class="fs-1">3</p>
                             </div>
                             <input id="inputSlider" class="w-100" type="range" min="0" max="6" value="3">
                         </div>
 
                         <div id="checkbox-container" class="mb-2">
                             <div id="">
-                                <input type="checkbox" name="capitalize" id="">
+                                <input type="checkbox" name="capitalize" id="capsCheck">
                                 <label for="capitalize">Capitalize each word</label>
                             </div>
                             <div id="">
-                                <input type="checkbox" name="randomCaps" id="">
+                                <input type="checkbox" name="randomCaps" id="randomCapsCheck">
                                 <label for="randomCaps">Capitalize at random</label>
                             </div>
                             <div id="">
-                                <input type="checkbox" name="useSymbols" id="">
+                                <input type="checkbox" name="useSymbols" id="symCheck" checked="true">
                                 <label for="useSymbols">Include special characters</label>
                             </div>
                         </div>
