@@ -1,3 +1,6 @@
+//Beware, this file contains severe amounts of brain damage. But it works tho.
+
+
 let pswrd, prepositionList, adjectiveList, nounList, verbList, symbolList, questionList;
 let numberLength = 6;
 
@@ -17,7 +20,6 @@ let symCheck = document.querySelector("#symCheck");
 
 let sliderValue = document.querySelector("#sliderValue");
 let inputSlider = document.querySelector("#inputSlider");
-// sliderValue.textContent = inputSlider.value;
 
 inputSlider.addEventListener("input", (event) => {
     sliderValue.textContent = event.target.value;
@@ -25,8 +27,30 @@ inputSlider.addEventListener("input", (event) => {
 
 let randomWord = (wordArray) => wordArray[Math.floor(Math.random() * wordArray.length)];
 let randomNumber = () => Math.floor(Math.random()*100_000); //placeholder
-let checkIt = (checkbox, list, getRandom) => checkbox.checked ? getRandom(list) : "";
-//uhhh(symCheck, symbolList, randomWord);
+
+let checkSymb = (checkbox, symbList, getRandom) => checkbox.checked ? getRandom(symbList) : "";
+
+let flip = () => parseInt(Math.random()*10) % 2 == 0 ? true : false;
+let capitalize = (text) => text[0].toUpperCase()+text.slice(1);
+
+function handleCaps(wordList){
+    let word = randomWord(wordList);
+    let newWord = "";
+
+    if(randomCapsCheck.checked){
+        for(let i = 0; i < word.length; i++){
+            flip() ? newWord += word[i].toUpperCase() : newWord += word[i];
+        }
+    } else {
+        newWord = word;
+    }
+
+    if(capsCheck.checked){
+        newWord = capitalize(newWord);
+    }
+
+    return newWord;
+}
 
 fetch("./import/prepositions.json")
     .then(response => response.json())
@@ -67,31 +91,32 @@ function displayPassword(password){
     resultText.style.color = "white";
 }
 
+
 function getPass(){
     switch(Math.floor(Math.random() * 6)){
         case 0:
             //frothylistbelowfuneral*65820
-            pswrd = randomWord(adjectiveList) + randomWord(nounList) + randomWord(prepositionList) + randomWord(nounList) + checkIt(symCheck, symbolList, randomWord) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + handleCaps(prepositionList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 1:
             //bounceyear54920
-            pswrd = randomWord(verbList) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(verbList) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 2:
             //irealizepassenger!perception92527
-            pswrd = "i" + randomWord(verbList) + randomWord(nounList) + checkIt(symCheck, symbolList, randomWord) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = "i" + handleCaps(verbList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 3:
             //gaudystress57636
-            pswrd = randomWord(adjectiveList) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
         case 4:
             //specifytheconceptas@post34345
-            pswrd = randomWord(verbList) + "the" + randomWord(nounList) + randomWord(prepositionList) + checkIt(symCheck, symbolList, randomWord) + randomWord(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(verbList) + "the" + handleCaps(nounList) + handleCaps(prepositionList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
             displayPassword(pswrd);
             break;
     }
