@@ -1,6 +1,4 @@
-//Beware, this file contains severe amounts of brain damage. But it works tho.
-
-
+//Beware, this file contains severe amounts of brain damage.
 let pswrd, prepositionList, adjectiveList, nounList, verbList, symbolList, questionList;
 let numberLength = 6;
 
@@ -26,7 +24,9 @@ inputSlider.addEventListener("input", (event) => {
 });
 
 let randomWord = (wordArray) => wordArray[Math.floor(Math.random() * wordArray.length)];
-let randomNumber = () => Math.floor(Math.random()*100_000); //placeholder
+//quick and dirty, just how i like it
+let randomNumber = () => inputSlider.value == 0 ? "" : Math.floor(Math.random()* Math.pow(10, inputSlider.value)); 
+
 
 let checkSymb = (checkbox, symbList, getRandom) => checkbox.checked ? getRandom(symbList) : "";
 
@@ -96,27 +96,27 @@ function getPass(){
     switch(Math.floor(Math.random() * 6)){
         case 0:
             //frothylistbelowfuneral*65820
-            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + handleCaps(prepositionList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + handleCaps(prepositionList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + randomNumber();
             displayPassword(pswrd);
             break;
         case 1:
             //bounceyear54920
-            pswrd = handleCaps(verbList) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(verbList) + handleCaps(nounList) + randomNumber();
             displayPassword(pswrd);
             break;
         case 2:
             //irealizepassenger!perception92527
-            pswrd = "i" + handleCaps(verbList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = "i" + handleCaps(verbList) + handleCaps(nounList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + randomNumber();
             displayPassword(pswrd);
             break;
         case 3:
             //gaudystress57636
-            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(adjectiveList) + handleCaps(nounList) + randomNumber();
             displayPassword(pswrd);
             break;
         case 4:
             //specifytheconceptas@post34345
-            pswrd = handleCaps(verbList) + "the" + handleCaps(nounList) + handleCaps(prepositionList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + (inputSlider.value > 0 ? randomNumber() : "");
+            pswrd = handleCaps(verbList) + "the" + handleCaps(nounList) + handleCaps(prepositionList) + checkSymb(symCheck, symbolList, randomWord) + handleCaps(nounList) + randomNumber();
             displayPassword(pswrd);
             break;
     }
